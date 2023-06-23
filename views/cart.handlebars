@@ -1,4 +1,11 @@
 <!-- cart.handlebars -->
+ <header>
+  <div class="header-container">
+    <a href="/">
+      <h1 class="logo">Music Shop🎸</h1>
+    </a>
+  </div>
+</header>
 <main>
   <h2>Cart</h2>
   <p>
@@ -6,35 +13,47 @@
   </p>
   <section id="cart">
     <div class="cart-items">
-      {{#each cartItems}}
+          {{#each cartItems}}
         <div class="cart-item">
-          <a href="/product/{{this.inventoryId}}" class="cart-item-info">
-            <img src="{{this.image}}" alt="{{this.name}}" />
+          <a
+            href="/product/{{inventoryId}}"
+            class="cart-item-info">
+            <img src="/images/{{image}}" name="{{name}}" />
             <div>
-              <p>{{this.name}}</p>
-              <p>{{this.price}}</p>
+              <p>{{name}}</p>
+              <p>${{price}}</p>
             </div>
           </a>
           <div class="cart-item-subtotal">
             <div class="cart-item-controls">
               <label>
                 Quantity
-                <input data-cart-id="{{this.id}}" type="number" min="0" max="{{this.inventoryQuantity}}" value="{{this.quantity}}" />
+                <input
+                  data-cart-id="{{id}}"
+                  type="number"
+                  min="0"
+                  max="{{inventoryQuantity}}"
+                  value="{{quantity}}" />
               </label>
-              <button class="remove-from-cart" data-cart-id="{{this.id}}">
+              <button
+                class="remove-from-cart"
+                data-cart-id="{{id}}">
                 Remove
               </button>
             </div>
-            <p>{{this.calculatedPrice}}</p>
+            <p>${{calculatedPrice}}</p>
           </div>
         </div>
         <hr />
-      {{/each}}
+        {{/each}}
       <div class="cart-total">
         <p>Total:</p>
-        <p>{{total}}</p>
+        <p>${{total}}</p>
       </div>
       <button id="emptyCart">Empty Cart</button>
     </div>
   </section>
 </main>
+<footer>
+  <p>&copy; Music Shop</p>
+</footer>
